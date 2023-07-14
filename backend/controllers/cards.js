@@ -8,7 +8,7 @@ const getCards = (req, res, next) => {
   cardsModel
     .find({})
     .then((cards) => {
-      res.send({ data: cards });
+      res.send(cards);
     })
     .catch((err) => next(err));
 };
@@ -19,7 +19,7 @@ const createCards = (req, res, next) => {
   cardsModel
     .create({ name, link, owner: req.user._id })
     // вернём записанные в базу данные
-    .then((cards) => res.status(STATUS_CODES.OK).send({ data: cards }))
+    .then((cards) => res.status(STATUS_CODES.OK).send(cards))
     // данные не записались, вернём ошибку
     .catch((err) => {
       if (err.name === 'ValidationError') {

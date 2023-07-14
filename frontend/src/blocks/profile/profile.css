@@ -1,0 +1,25 @@
+.profile {
+  display: grid;
+  grid-template-rows: repeat(2, 60px);
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-areas:
+    "profile__avatar profile__info profile__add-button"
+    "profile__avatar profile__activity profile__add-button";
+  max-width: 880px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 1024px) {
+  .profile {
+    grid-template-rows: repeat(4, minmax(min-content, max-content));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-areas:
+      "profile__avatar"
+      "profile__info"
+      "profile__activity"
+      "profile__add-button";
+    justify-items: center;
+    margin-bottom: 36px;
+  }
+}

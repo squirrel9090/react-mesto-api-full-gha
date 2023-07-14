@@ -1,0 +1,26 @@
+.profile__info {
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: profile__info;
+  max-width: 336px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .profile__info {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 493px) {
+  .profile__info {
+    margin-top: 6px;
+    margin-left: 26px;
+    max-width: 256px;
+  }
+}

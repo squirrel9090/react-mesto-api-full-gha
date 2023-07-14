@@ -1,0 +1,8 @@
+.popup__figure {
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  position: relative;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}

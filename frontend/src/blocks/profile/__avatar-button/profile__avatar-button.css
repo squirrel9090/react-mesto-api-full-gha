@@ -1,0 +1,17 @@
+.profile__avatar-button {
+  max-width: 120px;
+  border-radius: 50%;
+  margin-right: 30px;
+  grid-area: profile__avatar;
+  cursor: pointer;
+  background-image: url(../../../images/pencil.svg);
+  opacity: 0;
+}
+
+.profile__avatar-button:hover {
+  opacity: 0.8;
+  background-color: #c4c4c4;
+  border: 2px solid #c4c4c4;
+  background-position: center;
+  background-repeat: no-repeat;
+}
