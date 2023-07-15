@@ -103,7 +103,7 @@ class Api {
   }
 
   //метод обновления аватара пользователя
-  changeAvatar(baseUrl) {
+  changeAvatar({ avatar }) {
     const token = localStorage.getItem('token')
     return fetch(`${this._baseUrl}${'/users/me/avatar'}`, {
       method: 'PATCH',
@@ -111,9 +111,7 @@ class Api {
         authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        avatar: baseUrl,
-      }),
+      body: JSON.stringify({ avatar }),
     }).then(this._getJson)
   }
 

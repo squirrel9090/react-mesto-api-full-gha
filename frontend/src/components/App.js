@@ -57,8 +57,8 @@ function App() {
   useEffect(() => {
     if (isLoggedIn) {
       Promise.all([api.getCurrentUser(), api.getCard()])
-        .then(([currentUser, cards]) => {
-          setCurrentUser(currentUser)
+        .then(([userData, cards]) => {
+          setCurrentUser(userData)
           setCards(cards)
         })
         .catch((err) => {
@@ -146,22 +146,22 @@ function App() {
   }
 
   //функция изменения информации профиля
-  function handleUserInfo(data) {
+  function handleUserInfo(userData) {
     return api
-      .patchUserData(data.name, data.about)
-      .then((res) => {
-        setCurrentUser(res)
+      .patchUserData(userData.name, userData.about)
+      .then((userDataServer) => {
+        setCurrentUser({ ...currentUser, ...userDataServer })
         closeAllPopups()
       })
       .catch((err) => console.log(err))
   }
 
   //функция изменения аватара
-  function handleUpdateAvatar(user) {
+  function handleUpdateAvatar(newAvatar) {
     return api
-      .changeAvatar(user.avatar)
-      .then((res) => {
-        setCurrentUser(res)
+      .changeAvatar(newAvatar)
+      .then((data) => {
+        setCurrentUser(data)
         closeAllPopups()
       })
       .catch((err) => console.log(err))
@@ -223,10 +223,8 @@ function App() {
   }
 
   const logOut = () => {
-    localStorage.removeItem('token')
     setIsLoggedIn(false)
-    setHeaderEmail(null)
-    setUserData({ email: '', password: '' })
+    localStorage.removeItem('token')
     navigate('/sign-in')
   }
 

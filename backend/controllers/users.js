@@ -21,7 +21,7 @@ const getUsersById = (req, res, next) => {
     .then((user) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
-      } else res.status(STATUS_CODES.OK).send({ data: user });
+      } else res.status(STATUS_CODES.OK).send(user);
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -98,7 +98,7 @@ const renewUser = (req, res, next) => {
         runValidators: true,
       },
     )
-    .then((user) => res.status(STATUS_CODES.OK).send({ data: user }))
+    .then((user) => res.status(STATUS_CODES.OK).send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError(`Возникла ошибка ${err.message}`));
@@ -118,7 +118,7 @@ const renewUserAvatar = (req, res, next) => {
         runValidators: true,
       },
     )
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError(`Возникла ошибка ${err.message}`));
