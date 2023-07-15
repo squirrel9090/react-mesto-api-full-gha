@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.252.129.222
+IP 084.252.129.222;
 
 Frontend https://front.mesto.nomoredomains.xyz
 
