@@ -130,7 +130,7 @@ class Api {
 
 //экземпляр класса апи для работы с запросами на сервер
 const api = new Api({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://mesto.yandex.students.nomoredomains.work',
   headers: {
     'Content-Type': 'application/json',
   },
