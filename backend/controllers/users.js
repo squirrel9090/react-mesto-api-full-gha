@@ -80,12 +80,7 @@ const findCurrentUser = (req, res, next) => {
         next(new NotFoundError('Пользователь не найден'));
       }
     })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        return next(new BadRequestError('Введены некорректные данные поиска'));
-      }
-      return next(err);
-    });
+    .catch((err) => next(err));
 };
 
 const renewUser = (req, res, next) => {

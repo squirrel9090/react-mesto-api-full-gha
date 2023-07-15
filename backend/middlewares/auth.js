@@ -6,7 +6,7 @@ const { NODE_ENV, JWT_SECRET = 'JWT_SECRET' } = process.env;
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
   if (!req.headers.authorization) {
-    throw new UnauthorizedError('Пользователь не авторизован');
+    return next(new UnauthorizedError('Пользователь не авторизован'));
   }
 
   const token = req.headers.authorization.replace('Bearer ', '');
@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
   try {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
-    throw new UnauthorizedError('Необходима авторизация');
+    return next(new UnauthorizedError('Необходима авторизация'));
   }
   req.user = payload;
   next();

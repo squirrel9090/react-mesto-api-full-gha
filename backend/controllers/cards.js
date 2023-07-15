@@ -43,7 +43,7 @@ const deleteCards = (req, res, next) => {
       return card.deleteOne().then(() => res.send({ message: 'Карточка удалена' }));
     })
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err.name === 'CastError') {
         return next(new BadRequestError('Переданы некорректные данные при удаления карточки'));
       }
       return next(err);
